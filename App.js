@@ -1,47 +1,52 @@
 import React from 'react';
-import { StyleSheet, Text, View, Platform } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { StyleSheet, Text, View, Platform } from 'react-native'
+import { TabNavigator, StackNavigator } from 'react-navigation'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 import { purple, white } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import rootReducer from './reducers'
+import CreateStack from './components/CreateStack'
+import DeckListContainer from './containerComponents/DeckListContainer'
 
-import createStack from './components/createStack'
-
+const store = createStore(rootReducer)
 export default class App extends React.Component {
   render() {
     return (
-      <Tabs />
+        <Provider store={store}>
+          <Tabs style={style.padding} />
+        </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  cardDeck: {
-    margin: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 10, height: 10
-    },
-    shadowRadius: 40,
-    shadowOpacity: 1
-  },
-});
+const style = StyleSheet.create({
+  padding: {
+    paddingTop: 5
+  }
+})
+
 
 
 const Tabs = TabNavigator({
-  createStack: {
-    screen: createStack,
+  CreateStack: {
+    screen: CreateStack,
     navigationOptions: {
       tabBarLabel: 'Create new stack',
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={20} color={tintColor} />
     }
   },
+  DeckListContainer: {
+    screen: DeckListContainer,
+    navigationOptions: {
+      tabBarLabel: 'Back to stacks',
+      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-albums-outline' size={20} color={tintColor} />
+    }
+  }
 }, {
+  navigationOptions: {
+    headers: null
+  },
   tabBarOptions: {
     activeTintColor: Platform.OS === 'ios' ? purple: white,
     style: {
@@ -55,5 +60,6 @@ const Tabs = TabNavigator({
       shadowRadius: 6,
       shadowOpacity: 1
     }
-  }
+  },
+  initialRouteName: 'DeckListContainer'
 })
