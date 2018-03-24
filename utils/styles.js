@@ -5,9 +5,22 @@ const globalStyles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 40
   },
-  container: {
+  viewChild: {
     flex: 1,
-    paddingTop: 40
+  },
+  container: {
+    paddingTop: 40,
+    flex: 1
+  },
+  text: {
+    color: "#000000",
+    fontSize: 12,
+    textAlign: 'center'
+  },
+  card: {
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'grey'
   }
 })
 

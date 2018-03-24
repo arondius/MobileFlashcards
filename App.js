@@ -8,25 +8,18 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import rootReducer from './reducers'
 import CreateStack from './components/CreateStack'
 import DeckListContainer from './containerComponents/DeckListContainer'
+import globalStyles from './utils/styles'
 
 const store = createStore(rootReducer)
 export default class App extends React.Component {
   render() {
     return (
         <Provider store={store}>
-          <Tabs style={style.padding} />
+          <Tabs style={globalStyles.container} />
         </Provider>
     );
   }
 }
-
-const style = StyleSheet.create({
-  padding: {
-    paddingTop: 5
-  }
-})
-
-
 
 const Tabs = TabNavigator({
   CreateStack: {

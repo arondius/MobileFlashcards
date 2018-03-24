@@ -1,33 +1,37 @@
-function deckList(state = {...state,deckList: {}}, action) {
+function deckList(state, action) {
   return {
     ...state,
-    deckList: {
-      1: {
+    deckList: [
+      {
+        id: 1,
         title: 'Spanish vocabulary',
         questions: [
           1,2,3,4,5,6,7,8,9
         ]
       },
-      2: {
+      {
+        id: 2,
         title: 'French vocabulary',
         questions: [
-          1,2,3,4,5,6,7,8,9
+          10,11,12,13,14,15,16
         ]
       },
-      3: {
+      {
+        id: 3,
         title: 'React patterns',
         questions: [
-          1,2,3,4,5,6,7,8,9
+          16,17,18,19
         ]
       },
-      4: {
+      {
+        id: 4,
         title: 'Redux patterns',
         questions: [
-          1,2,3,4,5,6,7,8,9
+          20,21,22,23,24,25,26,27
         ]
       },
-    }
-  };
+    ]
+  }
 }
 
 export default deckList
