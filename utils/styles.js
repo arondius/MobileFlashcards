@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { orange, black } from './colors'
 
 const globalStyles = StyleSheet.create({
   screenTitle: {
@@ -7,20 +8,26 @@ const globalStyles = StyleSheet.create({
   },
   viewChild: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   container: {
     paddingTop: 40,
     flex: 1
   },
   text: {
-    color: "#000000",
+    color: black,
     fontSize: 12,
-    textAlign: 'center'
   },
   card: {
     padding: 20,
     borderBottomWidth: 1,
     borderBottomColor: 'grey'
+  },
+  btn: {
+    padding: 5,
+    backgroundColor: orange,
+    // color: black,
   }
 })
 

@@ -8,6 +8,9 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import rootReducer from './reducers'
 import CreateStack from './components/CreateStack'
 import DeckListContainer from './containerComponents/DeckListContainer'
+import DeckList from './components/DeckList'
+import Deck from './components/Deck'
+
 import globalStyles from './utils/styles'
 
 const store = createStore(rootReducer)
@@ -21,6 +24,11 @@ export default class App extends React.Component {
   }
 }
 
+const Stack = StackNavigator({
+  DeckListContainer: { screen: DeckListContainer },
+  Deck: { screen: Deck },
+})
+
 const Tabs = TabNavigator({
   CreateStack: {
     screen: CreateStack,
@@ -29,12 +37,8 @@ const Tabs = TabNavigator({
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={20} color={tintColor} />
     }
   },
-  DeckListContainer: {
-    screen: DeckListContainer,
-    navigationOptions: {
-      tabBarLabel: 'Back to stacks',
-      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-albums-outline' size={20} color={tintColor} />
-    }
+  DeckList: {
+    screen: Stack,
   }
 }, {
   navigationOptions: {
@@ -54,5 +58,5 @@ const Tabs = TabNavigator({
       shadowOpacity: 1
     }
   },
-  initialRouteName: 'DeckListContainer'
+  initialRouteName: 'DeckList'
 })

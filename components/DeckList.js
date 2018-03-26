@@ -1,13 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import globalStyles from '../utils/styles'
+import Deck from './Deck'
+import { withNavigation } from 'react-navigation'
 
-const deckList = ({deckList}, ...props) => {
+const deckList = ({deckList, navigation}) => {
   const renderItem = ({item}) => {
     return (
       <View style={[globalStyles.viewChild, globalStyles.card]}>
         <Text style={globalStyles.text}>{item.title}</Text>
-        <Text style={globalStyles.text}>{`${item.questions.length} cards`}</Text>
+        <Text style={globalStyles.text}>{`${item.questions.length} questions`}</Text>
+        <TouchableOpacity
+          onPress={() => ( navigation.navigate('Deck', {id: item.id}) )}
+          style={globalStyles.btn}
+        >
+          <Text>Practice your {item.title}</Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -26,4 +34,4 @@ const deckList = ({deckList}, ...props) => {
     </View>
   )
 }
-export default deckList;
+export default withNavigation(deckList);
