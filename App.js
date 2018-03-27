@@ -10,6 +10,8 @@ import CreateStack from './components/CreateStack'
 import DeckListContainer from './containerComponents/DeckListContainer'
 import DeckList from './components/DeckList'
 import Deck from './components/Deck'
+import AddCard from './components/AddCard'
+import Quiz from './components/Quiz'
 
 import globalStyles from './utils/styles'
 
@@ -27,18 +29,24 @@ export default class App extends React.Component {
 const Stack = StackNavigator({
   DeckListContainer: { screen: DeckListContainer },
   Deck: { screen: Deck },
+  AddCard: { screen: AddCard },
+  Quiz: { screen: Quiz },
 })
 
 const Tabs = TabNavigator({
   CreateStack: {
     screen: CreateStack,
     navigationOptions: {
-      tabBarLabel: 'Create new stack',
+      tabBarLabel: 'Add stack',
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={20} color={tintColor} />
     }
   },
   DeckList: {
     screen: Stack,
+    navigationOptions: {
+      tabBarLabel: 'View stacks',
+      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-albums' size={20} color={tintColor} />
+    }
   }
 }, {
   navigationOptions: {
