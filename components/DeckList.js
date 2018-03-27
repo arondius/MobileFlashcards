@@ -6,12 +6,17 @@ import { withNavigation } from 'react-navigation'
 
 const deckList = ({deckList, navigation}) => {
   const renderItem = ({item}) => {
+    const params = {
+      id: item.id,
+      title: item.title,
+      numberOfCards: item.questions.length
+    }
     return (
       <View style={[globalStyles.viewChild, globalStyles.card]}>
         <Text style={globalStyles.text}>{item.title}</Text>
         <Text style={globalStyles.text}>{`${item.questions.length} questions`}</Text>
         <TouchableOpacity
-          onPress={() => ( navigation.navigate('Deck', {id: item.id}) )}
+          onPress={() => ( navigation.navigate('Deck', params) )}
           style={globalStyles.btn}
         >
           <Text>Practice your {item.title}</Text>

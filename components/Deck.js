@@ -4,10 +4,11 @@ import { withNavigation } from 'react-navigation'
 import { View, Text } from 'react-native'
 
 const Deck = ( {navigation} ) => {
-  const { params } = navigation.state;
+  const { title, numberOfCards } = navigation.state.params;
   return (
     <View style={globalStyles.viewChild}>
-      <Text>{params.id}</Text>
+      <Text>{title}</Text>
+      <Text>{numberOfCards} cards in this deck</Text>
     </View>
   )
 }
