@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import DeckList from '../components/DeckList'
 import {connect} from 'react-redux'
 import globalStyles from '../utils/styles'
+import { getCardsInDeck } from '../actions/cards'
 
 class DeckListContainer extends Component {
   render() {
@@ -15,9 +16,16 @@ class DeckListContainer extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('DLContainer state', state)
   return {
     deckList: state.deckList
   }
 }
 
-export default connect(mapStateToProps)(DeckListContainer)
+function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    getCardsInDeck: dispatch(getCardsInDeck(this.props))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeckListContainer)

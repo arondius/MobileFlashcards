@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import deckList from './deckList'
-import deck from './deck'
+import questions from './questions'
 
-const rootReducer = combineReducers({deckList, deck})
+const rootReducer = combineReducers({deckList, questions})
 
 export default rootReducer

@@ -7,11 +7,11 @@ import { purple, white } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import rootReducer from './reducers'
 import CreateStack from './components/CreateStack'
-import DeckListContainer from './containerComponents/DeckListContainer'
+import DeckListContainer from './containers/DeckListContainer'
 import DeckList from './components/DeckList'
-import Deck from './components/Deck'
-import AddCard from './components/AddCard'
-import Quiz from './components/Quiz'
+import DeckContainer from './containers/DeckContainer'
+import AddCardContainer from './containers/AddCardContainer'
+import QuizContainer from './containers/QuizContainer'
 
 import globalStyles from './utils/styles'
 
@@ -28,9 +28,9 @@ export default class App extends React.Component {
 
 const Stack = StackNavigator({
   DeckListContainer: { screen: DeckListContainer },
-  Deck: { screen: Deck },
-  AddCard: { screen: AddCard },
-  Quiz: { screen: Quiz },
+  DeckContainer: { screen: DeckContainer },
+  AddCardContainer: { screen: AddCardContainer },
+  QuizContainer: { screen: QuizContainer },
 })
 
 const Tabs = TabNavigator({

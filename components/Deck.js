@@ -1,23 +1,22 @@
 import React from 'react';
 import globalStyles from '../utils/styles'
-import { withNavigation } from 'react-navigation'
 import { View, Text, TouchableOpacity } from 'react-native'
 
-const Deck = ( {navigation} ) => {
-  const params = navigation.state.params
-  const { title, numberOfCards } = params
+const Deck = ( {deck, questions, navigation} ) => {
+  const { title } = deck
+  numberOfQuestions = questions.length
   return (
     <View style={globalStyles.viewChild}>
       <Text>{title}</Text>
-      <Text>{numberOfCards} cards in this deck</Text>
+      <Text>{numberOfQuestions} cards in this deck</Text>
       <TouchableOpacity
-        onPress={() => ( navigation.navigate('Quiz', params) )}
+        onPress={() => ( navigation.navigate('QuizContainer', {deck: deck.id}) )}
         style={globalStyles.btn}
       >
         <Text>Start {title} quiz</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => ( navigation.navigate('AddCard', params) )}
+        onPress={() => ( navigation.navigate('AddCardContainer', params) )}
         style={globalStyles.btn}
       >
         <Text>Add a new card to {title}</Text>
@@ -26,4 +25,4 @@ const Deck = ( {navigation} ) => {
   )
 }
 
-export default withNavigation(Deck)
+export default Deck
