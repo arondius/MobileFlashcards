@@ -1,4 +1,4 @@
-defaultQuestionsState = [
+const defaultQuestionsState = [
   {
   	id: 1,
   	parentId: 1,

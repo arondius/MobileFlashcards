@@ -10,7 +10,7 @@ const Deck = ( {deck, questions, navigation} ) => {
       <Text>{title}</Text>
       <Text>{numberOfQuestions} cards in this deck</Text>
       <TouchableOpacity
-        onPress={() => ( navigation.navigate('QuizContainer', {deck: deck.id}) )}
+        onPress={() => ( navigation.navigate('QuizContainer', {deckId: deck.id, questions}) )}
         style={globalStyles.btn}
       >
         <Text>Start {title} quiz</Text>

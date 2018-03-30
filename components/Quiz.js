@@ -1,12 +1,18 @@
 import React from 'react';
 import globalStyles from '../utils/styles'
 import { withNavigation } from 'react-navigation'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 
-const Quiz = ({navigation}) => {
+const Quiz = ({navigation, question, nextQuestion}) => {
   return (
     <View style={globalStyles.viewChild}>
-      <Text>{navigation.state.params.title}</Text>
+      <Text>{question.question}</Text>
+      <TouchableOpacity
+        onPress={() => nextQuestion()}
+        style={globalStyles.btn}
+      >
+        <Text>Next question</Text>
+      </TouchableOpacity>
     </View>
   )
 }
