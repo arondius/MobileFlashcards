@@ -7,7 +7,6 @@ import DeckListItemContainer from '../containers/DeckListItemContainer'
 const deckList = ({deckList}) => {
 
   const renderItem = ({item}) => {
-    console.log('item', item)
     return (
       <DeckListItemContainer deck={item} />
     )

@@ -16,7 +16,6 @@ class DeckListItemContainer extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  console.log('DLC state', state)
   return {
     questions: state.questions.filter((question) => question.parentId === ownProps.deck.id)
   }

@@ -16,7 +16,6 @@ class DeckListContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('DLContainer state', state)
   return {
     deckList: state.deckList
   }
