@@ -1,6 +1,6 @@
 export const NEXT_QUESTION = 'NEXT_QUESTION'
 export function nextQuestion() {
-  console.log('Next question action called')
+  // console.log('Next question action called')
   return {
     type: NEXT_QUESTION,
   }
@@ -8,7 +8,7 @@ export function nextQuestion() {
 
 export const RESET_QUIZ = 'RESET_QUIZ'
 export function resetQuiz() {
-  console.log('ResetQuiz action called')
+  // console.log('ResetQuiz action called')
   return {
     type: RESET_QUIZ,
   }
@@ -16,7 +16,7 @@ export function resetQuiz() {
 
 export const SET_CORRECT_ANSWER = 'SET_CORRECT_ANSWER'
 export function setCorrectAnswer() {
-  console.log('setCorrectAnswer action called')
+  // console.log('setCorrectAnswer action called')
   return {
     type: SET_CORRECT_ANSWER,
   }

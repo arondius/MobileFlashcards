@@ -13,6 +13,7 @@ class QuizScore extends React.Component {
 
   handleClickRestartQuiz() {
     const { params } = this.props.navigation.state
+    console.log('QuizScore params', params)
     // this.props.resetQuiz()
     this.props.navigation.navigate('QuizContainer', params)
   }

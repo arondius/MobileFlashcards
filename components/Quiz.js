@@ -8,7 +8,7 @@ import globalStyles from '../utils/styles'
 class Quiz extends React.Component {
   constructor(props) {
     super(props)
-    console.log('this.props', this.props)
+    // console.log('this.props', this.props)
     this.state = {
       showAnswer: false,
     }
