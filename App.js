@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Platform } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 import { purple, white } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import rootReducer from './reducers'
@@ -15,7 +16,6 @@ import QuizContainer from './containers/QuizContainer'
 
 import globalStyles from './utils/styles'
 
-const store = createStore(rootReducer)
 export default class App extends React.Component {
   render() {
     return (
@@ -25,6 +25,7 @@ export default class App extends React.Component {
     );
   }
 }
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 const Stack = StackNavigator({
   DeckListContainer: { screen: DeckListContainer },

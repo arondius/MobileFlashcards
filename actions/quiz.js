@@ -20,4 +20,16 @@ export function setCorrectAnswer() {
   return {
     type: SET_CORRECT_ANSWER
   }
+}}
+
+export function markQuestion(type) {
+  return function (dispatch) {
+    if (type === 'correct') {
+      dispatch(setCorrectAnswer())
+      dispatch(nextQuestion())
+    }
+    if (type === 'incorrect') {
+      dispatch(nextQuestion())
+    }
+  }
 }

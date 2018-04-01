@@ -20,11 +20,12 @@ class QuizScore extends React.Component {
   }
   
   handleClickRestartQuiz() {
+    const { params } = this.props.navigation.state
     // this.props.resetQuiz()
-    this.props.navigation.navigate('QuizContainer')
+    this.props.navigation.navigate('QuizContainer', params)
   }
-  
-  handleClickRestartQuiz() {
+
+  handleClickBackToDeck() {
     this.props.navigation.navigate('DeckContainer')
   }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import globalStyles from '../utils/styles'
 import { connect } from 'react-redux'
-import { nextQuestion, resetQuiz } from '../actions/quiz'
+import { nextQuestion, resetQuiz, markQuestion } from '../actions/quiz'
 import Quiz from '../components/Quiz'
 import QuizScore from '../components/QuizScore'
 import { View } from 'react-native'
@@ -21,17 +21,22 @@ class QuizContainer extends React.Component {
       // Is currentQuestion equal or smaller than the total amount of questions? 
       // That means we can show the Quiz component with the nextQuestion dispatcher
       if (numberOfQuestions >= currentQuestion && questions[currentQuestion]) {
-        return(
-          <Quiz question={questions[currentQuestion]} nextQuestion={this.props.nextQuestion}/>
-        )
-      } else {
-        return(
-          <QuizScore numberOfCorrectAnswers={this.props.numberOfCorrectAnswers numberOfQuestions={numberOfQuestions}}/>
+        return (
+          <Quiz
+            question={questions[currentQuestion]}
+            nextQuestion={this.props.nextQuestion}
+            markQuestion={this.props.markQuestion}
+          />
         )
       }
-    } else {
-      return false
+      return (
+        <QuizScore
+          numberOfCorrectAnswers={this.props.numberOfCorrectAnswers}
+          numberOfQuestions={numberOfQuestions}
+        />
+      )
     }
+    return false
   }
   
   render() {
@@ -52,6 +57,7 @@ function mapDispatchToProps(dispatch) {
   return ({
     nextQuestion: () => {dispatch(nextQuestion())},
     resetQuiz: () => {dispatch(resetQuiz())}
+    markQuestion: (type) => { dispatch(markQuestion(type)) },
   })
 }
 

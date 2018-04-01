@@ -1,6 +1,7 @@
 import React from 'react';
 import globalStyles from '../utils/styles'
 import { withNavigation } from 'react-navigation'
+import { Ionicons } from '@expo/vector-icons'
 import { View, Text, TouchableOpacity } from 'react-native'
 
 class Quiz extends React.Component {
@@ -38,16 +39,16 @@ class Quiz extends React.Component {
         <Text>{question.question}</Text>
         {this.showAnswer()}
         <TouchableOpacity
-          onPress={ () => this.handleClickMarkQuestion('correct') }
+          onPress={() => this.props.markQuestion('correct')}
           style={globalStyles.btn}
         >
-          <Text>ion-ios-close-outline</Text>
+          <Ionicons name="ios-checkmark-outline" size={40} color="green" />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={ () => this.handleClickMarkQuestion('incorrect') }
+          onPress={() => this.props.markQuestion('incorrect')}
           style={globalStyles.btn}
         >
-          <Text>ion-ios-checkmark-outline</Text>
+          <Ionicons name="ios-close-outline" size={40} color="green" />
         </TouchableOpacity>
 
         <TouchableOpacity
