@@ -8,7 +8,7 @@ const defaultQuizState = {
 function quiz(state = defaultQuizState, action) {
   console.log('reducer action', action)
   console.log('reducer state', state)
-  switch(action.type) {
+  switch (action.type) {
     case NEXT_QUESTION:
       return {
         ...state,
