@@ -4,7 +4,7 @@ import { orange, black } from './colors'
 const globalStyles = StyleSheet.create({
   screenTitle: {
     textAlign: 'center',
-    fontSize: 40
+    fontSize: 40,
   },
   viewChild: {
     flex: 1,
@@ -13,7 +13,7 @@ const globalStyles = StyleSheet.create({
   },
   container: {
     paddingTop: 40,
-    flex: 1
+    flex: 1,
   },
   text: {
     color: black,
@@ -22,13 +22,13 @@ const globalStyles = StyleSheet.create({
   card: {
     padding: 20,
     borderBottomWidth: 1,
-    borderBottomColor: 'grey'
+    borderBottomColor: 'grey',
   },
   btn: {
     padding: 5,
     backgroundColor: orange,
     // color: black,
-  }
+  },
 })
 
 export default globalStyles

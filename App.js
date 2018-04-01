@@ -1,31 +1,27 @@
-import React from 'react';
-import { StyleSheet, Text, View, Platform } from 'react-native'
+import React from 'react'
+import { Platform } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import { Ionicons } from '@expo/vector-icons'
 import { purple, white } from './utils/colors'
-import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import rootReducer from './reducers'
 import CreateStack from './components/CreateStack'
 import DeckListContainer from './containers/DeckListContainer'
-import DeckList from './components/DeckList'
 import DeckContainer from './containers/DeckContainer'
 import AddCardContainer from './containers/AddCardContainer'
 import QuizContainer from './containers/QuizContainer'
 
 import globalStyles from './utils/styles'
 
-export default class App extends React.Component {
-  render() {
-    return (
-        <Provider store={store}>
-          <Tabs style={globalStyles.container} />
-        </Provider>
-    );
-  }
-}
 const store = createStore(rootReducer, applyMiddleware(thunk))
+
+const App = () => (
+  <Provider store={store}>
+    <Tabs style={globalStyles.container} />
+  </Provider>
+)
 
 const Stack = StackNavigator({
   DeckListContainer: { screen: DeckListContainer },
@@ -51,21 +47,23 @@ const Tabs = TabNavigator({
   }
 }, {
   navigationOptions: {
-    headers: null
+    headers: null,
   },
   tabBarOptions: {
-    activeTintColor: Platform.OS === 'ios' ? purple: white,
+    activeTintColor: Platform.OS === 'ios' ? purple : white,
     style: {
       height: 56,
-      backgroundColor: Platform.OS === 'ios' ? white: purple,
+      backgroundColor: Platform.OS === 'ios' ? white : purple,
       shadowColor: 'rgba(0,0,0,0.24)',
       shadowOffset: {
         width: 0,
-        height: 3
+        height: 3,
       },
       shadowRadius: 6,
-      shadowOpacity: 1
-    }
+      shadowOpacity: 1,
+    },
   },
-  initialRouteName: 'DeckList'
+  initialRouteName: 'DeckList',
 })
+
+export default App

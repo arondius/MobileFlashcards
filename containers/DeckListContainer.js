@@ -21,10 +21,4 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
-  return {
-    getCardsInDeck: dispatch(getCardsInDeck(this.props))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DeckListContainer)
+export default connect(mapStateToProps)(DeckListContainer)

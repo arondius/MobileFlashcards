@@ -1,24 +1,16 @@
-import React from 'react';
-import globalStyles from '../utils/styles'
+import React from 'react'
 import { withNavigation } from 'react-navigation'
-import QuizContainer from '../containers/QuizContainer'
-import DeckContainer from '../containers/DeckContainer'
 import { View, Text, TouchableOpacity } from 'react-native'
+import globalStyles from '../utils/styles'
 
 class QuizScore extends React.Component {
-
-  constructor(props) {
-    super(props)
-    console.log('QuizScore props', this.props)
-  }
-  
   displayScore() {
-    const {numberOfQuestions, numberOfCorrectAnswers} = this.props
+    const { numberOfQuestions, numberOfCorrectAnswers } = this.props
     return (
       <Text>{`Congratulations you've got ${numberOfCorrectAnswers} out of ${numberOfQuestions} questions right`}</Text>
     )
   }
-  
+
   handleClickRestartQuiz() {
     const { params } = this.props.navigation.state
     // this.props.resetQuiz()
