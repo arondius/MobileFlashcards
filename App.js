@@ -35,16 +35,16 @@ const Tabs = TabNavigator({
     screen: CreateStack,
     navigationOptions: {
       tabBarLabel: 'Add stack',
-      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={20} color={tintColor} />
-    }
+      tabBarIcon: () => <Ionicons name="ios-bookmarks" size={20} color="green" />,
+    },
   },
   DeckList: {
     screen: Stack,
     navigationOptions: {
       tabBarLabel: 'View stacks',
-      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-albums' size={20} color={tintColor} />
-    }
-  }
+      tabBarIcon: () => <Ionicons name="ios-albums" size={20} color="red" />,
+    },
+  },
 }, {
   navigationOptions: {
     headers: null,
