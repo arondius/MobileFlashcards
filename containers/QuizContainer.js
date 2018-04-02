@@ -9,7 +9,7 @@ import QuizScore from '../components/QuizScore'
 
 class QuizContainer extends React.Component {
   getQuestionOrScoreView() {
-    const { questions } = this.props.navigation.state.params
+    const { questions } = this.props
     const { currentQuestion } = this.props
     const numberOfQuestions = questions.length
 
@@ -47,8 +47,10 @@ class QuizContainer extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  const parentId = ownProps.navigation.state.params.deck.id
   return {
+    questions: state.questions.filter(question => question.parentId === parentId),
     currentQuestion: state.quiz.currentQuestion,
     numberOfCorrectAnswers: state.quiz.numberOfCorrectAnswers,
   }

@@ -1,7 +1,9 @@
-export const GET_CARDS_IN_DECK = 'GET_CARDS_IN_DECK'
-export function getCardsInDeck(deckId) {
+export const ADD_CARD = 'ADD_CARD'
+export function addCard(parentId, question, answer) {
   return {
-    type: GET_CARDS_IN_DECK,
-    deckId
+    type: ADD_CARD,
+    parentId,
+    question,
+    answer,
   }
 }

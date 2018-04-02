@@ -1,14 +1,16 @@
 import React from 'react'
-import {connect} from 'react-redux'
-
+import { connect } from 'react-redux'
 import AddCard from '../components/AddCard'
+import { addCard } from '../actions/cards'
 
-class AddCardContainer extends React.Component {
-  render() {
-    return(
-      <AddCard />
-    )
-  }
+const AddCardContainer = props => (
+  <AddCard addCard={props.addCard} />
+)
+
+function mapDispatchToProps(dispatch) {
+  return ({
+    addCard: (deckId, question, answer) => { dispatch(addCard(deckId, question, answer)) },
+  })
 }
 
-export default connect()(AddCardContainer);
+export default connect(null, mapDispatchToProps)(AddCardContainer)

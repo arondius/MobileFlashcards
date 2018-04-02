@@ -11,12 +11,13 @@ const Deck = ({ deck, questions, navigation }) => {
     <View style={globalStyles.viewChild}>
       <Text>{title}</Text>
       <Text>{numberOfQuestions} cards in this deck</Text>
-      <TouchableOpacity
-        onPress={() => (navigation.navigate('QuizContainer', params))}
-        style={globalStyles.btn}
-      >
-        <Text>Start {title} quiz</Text>
-      </TouchableOpacity>
+      {numberOfQuestions > 0 ?
+        <TouchableOpacity
+          onPress={() => (navigation.navigate('QuizContainer', params))}
+          style={globalStyles.btn}
+        >
+          <Text>Start {title} quiz</Text>
+        </TouchableOpacity> : null}
       <TouchableOpacity
         onPress={() => (navigation.navigate('AddCardContainer', params))}
         style={globalStyles.btn}
