@@ -11,7 +11,7 @@ const DeckContainer = (props) => {
   const { deck, questions } = props.navigation.state.params
   return (
     <View style={globalStyles.container}>
-      <Deck deck={deck} questions={questions} navigation={props.navigation} />
+      <Deck deck={deck} questions={questions} />
     </View>
   )
 }
