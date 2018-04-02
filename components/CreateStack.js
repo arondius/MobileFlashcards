@@ -1,12 +1,35 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react'
+import { KeyboardAvoidingView, TextInput, Text, TouchableOpacity } from 'react-native'
 import globalStyles from '../utils/styles'
 
-const createStack = () => (
-  <View style={globalStyles.viewChild}>
-    <Text>Create Stack</Text>
-  </View>
-)
+class CreateStack extends Component {
+  state = {
+    input: '',
+  }
 
-export default createStack;
+  handleTextChange = (input) => {
+    this.setState(() => ({
+      input,
+    }))
+  }
 
+  render() {
+    return (
+      <KeyboardAvoidingView behavior="padding" style={globalStyles.viewChild} >
+        <Text style={globalStyles.screenTitle}>Add new Deck</Text>
+        <TextInput
+          onChangeText={this.handleTextChange}
+          value={this.state.input}
+          style={globalStyles.input}
+        />
+        <TouchableOpacity
+          style={globalStyles.btn}
+          onPress={() => this.props.saveDeck()}
+        >
+          <Text>Save Deck</Text>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
+    )
+  }
+}
+export default CreateStack

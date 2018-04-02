@@ -29,6 +29,14 @@ const globalStyles = StyleSheet.create({
     backgroundColor: orange,
     // color: black,
   },
+  input: {
+    width: 200,
+    height: 40,
+    padding: 8,
+    borderColor: 'grey',
+    borderWidth: 1,
+    margin: 40,
+  },
 })
 
 export default globalStyles
