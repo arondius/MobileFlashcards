@@ -1,3 +1,5 @@
+import { SAVE_DECK } from '../actions/deckList'
+
 const defaultDeckListState = [
   {
     id: 1,
@@ -30,9 +32,14 @@ const defaultDeckListState = [
 ]
 
 function deckList(state = defaultDeckListState, action) {
-  return [
-    ...state
-  ]
+  const maxValueOfId = Math.max(...state.map(o => o.id))
+  const id = maxValueOfId + 1
+  switch (action.type) {
+    case SAVE_DECK:
+      return [...state, { id, title: action.title, questions: [] }]
+    default:
+      return [...state]
+  }
 }
 
 export default deckList

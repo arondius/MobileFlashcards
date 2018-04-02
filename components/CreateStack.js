@@ -24,7 +24,7 @@ class CreateStack extends Component {
         />
         <TouchableOpacity
           style={globalStyles.btn}
-          onPress={() => this.props.saveDeck()}
+          onPress={() => this.props.saveDeck(this.state.input)}
         >
           <Text>Save Deck</Text>
         </TouchableOpacity>

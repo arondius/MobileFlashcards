@@ -1,8 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import CreateStack from '../components/CreateStack'
+import { saveDeck } from '../actions/deckList'
 
-const CreateStackContainer = () => (
-  <CreateStack />
+const CreateStackContainer = props => (
+  <CreateStack saveDeck={props.saveDeck} />
 )
 
-export default CreateStackContainer
+function mapDispatchToProps(dispatch) {
+  return ({
+    saveDeck: (title) => { dispatch(saveDeck(title)) },
+  })
+}
+
+export default connect(null, mapDispatchToProps)(CreateStackContainer)
