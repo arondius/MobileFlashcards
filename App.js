@@ -19,7 +19,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk))
 
 const App = () => (
   <Provider store={store}>
-    <Tabs style={globalStyles.container} />
+    <Tabs />
   </Provider>
 )
 
