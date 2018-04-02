@@ -33,6 +33,7 @@ class QuizContainer extends React.Component {
         <QuizScore
           numberOfCorrectAnswers={this.props.numberOfCorrectAnswers}
           numberOfQuestions={numberOfQuestions}
+          resetQuiz={this.props.resetQuiz}
         />
       )
     }
