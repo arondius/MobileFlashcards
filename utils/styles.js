@@ -25,9 +25,26 @@ const globalStyles = StyleSheet.create({
     borderBottomColor: 'grey',
   },
   btn: {
-    padding: 5,
+    height: 48,
     backgroundColor: orange,
-    // color: black,
+    margin: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  btnMarkAnswer: {
+    width: 48,
+    height: 48,
+    paddingLeft: 0,
+    paddingRight: 0,
+    // color: 'white',
+  },
+  btnError: {
+    backgroundColor: 'red',
+  },
+  btnCheck: {
+    backgroundColor: 'green',
   },
   input: {
     width: 200,

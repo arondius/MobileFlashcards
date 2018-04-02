@@ -26,6 +26,8 @@ class QuizContainer extends React.Component {
             question={questions[currentQuestion]}
             nextQuestion={this.props.nextQuestion}
             markQuestion={this.props.markQuestion}
+            numberOfQuestions={numberOfQuestions}
+            currentQuestion={this.props.currentQuestion}
           />
         )
       }

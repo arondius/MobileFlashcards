@@ -2,7 +2,6 @@ import React from 'react'
 import { withNavigation } from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons'
 import { View, Text, TouchableOpacity } from 'react-native'
-
 import globalStyles from '../utils/styles'
 
 class Quiz extends React.Component {
@@ -28,7 +27,11 @@ class Quiz extends React.Component {
 
   showAnswer() {
     if (this.state.showAnswer) {
-      return (<Text>{this.props.question.answer}</Text>)
+      return (
+        <Text style={globalStyles.screenTitle}>
+          {this.props.question.answer}
+        </Text>
+      )
     }
     return null
   }
@@ -37,20 +40,25 @@ class Quiz extends React.Component {
     const { question } = this.props
     return (
       <View style={globalStyles.viewChild}>
-        <Text>{question.question}</Text>
+        <Text style={{ fontSize: 24 }}>
+          Question {this.props.currentQuestion} of {this.props.numberOfQuestions}
+        </Text>
+        <Text style={globalStyles.screenTitle}>{question.question}</Text>
         {this.showAnswer()}
-        <TouchableOpacity
-          onPress={() => this.props.markQuestion('correct')}
-          style={globalStyles.btn}
-        >
-          <Ionicons name="ios-checkmark-outline" size={40} color="green" />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => this.props.markQuestion('incorrect')}
-          style={globalStyles.btn}
-        >
-          <Ionicons name="ios-close-outline" size={40} color="green" />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row' }} >
+          <TouchableOpacity
+            onPress={() => this.props.markQuestion('correct')}
+            style={[globalStyles.btn, globalStyles.btnMarkAnswer, globalStyles.btnCheck]}
+          >
+            <Ionicons name="ios-checkmark-outline" size={40} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => this.props.markQuestion('incorrect')}
+            style={[globalStyles.btn, globalStyles.btnMarkAnswer, globalStyles.btnError]}
+          >
+            <Ionicons name="ios-close-outline" size={40} color="white" />
+          </TouchableOpacity>
+        </View>
 
         <TouchableOpacity
           onPress={() => this.handleShowAnswerClick()}
