@@ -13,8 +13,6 @@ import DeckContainer from './containers/DeckContainer'
 import AddCardContainer from './containers/AddCardContainer'
 import QuizContainer from './containers/QuizContainer'
 
-import globalStyles from './utils/styles'
-
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 const App = () => (

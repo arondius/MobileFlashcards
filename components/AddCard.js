@@ -43,7 +43,7 @@ class AddCard extends Component {
             this.props.addCard(
               cardId,
               this.state.inputQuestion,
-              this.state.inputAnswer
+              this.state.inputAnswer,
             )
             this.props.navigation.navigate('DeckContainer', params)
           }}
