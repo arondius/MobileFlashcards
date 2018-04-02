@@ -34,14 +34,14 @@ const Tabs = TabNavigator({
   CreateStack: {
     screen: CreateStackContainer,
     navigationOptions: {
-      tabBarLabel: 'Add stack',
+      tabBarLabel: 'Add deck',
       tabBarIcon: () => <Ionicons name="ios-bookmarks" size={20} color="green" />,
     },
   },
   DeckList: {
     screen: Stack,
     navigationOptions: {
-      tabBarLabel: 'View stacks',
+      tabBarLabel: 'View deck',
       tabBarIcon: () => <Ionicons name="ios-albums" size={20} color="red" />,
     },
   },
