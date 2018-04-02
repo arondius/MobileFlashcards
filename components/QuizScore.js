@@ -19,7 +19,8 @@ class QuizScore extends React.Component {
   }
 
   handleClickBackToDeck() {
-    this.props.navigation.navigate('DeckContainer')
+    const { params } = this.props.navigation.state
+    this.props.navigation.navigate('DeckContainer', params)
   }
 
   render() {
