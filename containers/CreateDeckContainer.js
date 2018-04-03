@@ -2,14 +2,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import CreateStack from '../components/CreateStack'
 import { saveDeck } from '../actions/decks'
+import guid from '../utils/helpers'
 
 const CreateStackContainer = props => (
   <CreateStack saveDeck={props.saveDeck} />
 )
 
 function mapDispatchToProps(dispatch) {
+  const id = guid()
   return ({
-    saveDeck: (title) => { dispatch(saveDeck(title)) },
+    saveDeck: (id, title) => { dispatch(saveDeck(id, title)) },
   })
 }
 

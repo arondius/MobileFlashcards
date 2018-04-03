@@ -2,30 +2,28 @@ import { SAVE_DECK } from '../actions/decks'
 
 const defaultDecksState = [
   {
-    id: 1,
+    id: '5808a1-53d-695-8f4-c70b3a347',
     title: 'Spanish vocabulary',
   },
   {
-    id: 2,
+    id: 'dbff53-904-198-6f4-0307c9d2',
     title: 'French vocabulary',
   },
   {
-    id: 3,
+    id: '467e59-d30-791-e0-4c9f7d141',
     title: 'React patterns',
   },
   {
-    id: 4,
+    id: '4c7f31-67a-834-37d-2c27dd0b8',
     title: 'Redux patterns',
   },
 ]
 
 
 function decks(state = defaultDecksState, action) {
-  const maxValueOfId = Math.max(...state.map(o => o.id))
-  const id = maxValueOfId + 1
   switch (action.type) {
     case SAVE_DECK:
-      return [...state, { id, title: action.title, questions: [] }]
+      return [...state, { id: action.id, title: action.title, questions: [] }]
     default:
       return state
   }
