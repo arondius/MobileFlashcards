@@ -7,7 +7,7 @@ import thunk from 'redux-thunk'
 import { Ionicons } from '@expo/vector-icons'
 import { purple, white } from './utils/colors'
 import rootReducer from './reducers'
-import CreateStackContainer from './containers/CreateStackContainer'
+import CreateDeckContainer from './containers/CreateDeckContainer'
 import DeckListContainer from './containers/DeckListContainer'
 import DeckContainer from './containers/DeckContainer'
 import AddCardContainer from './containers/AddCardContainer'
@@ -30,7 +30,7 @@ const Stack = StackNavigator({
 
 const Tabs = TabNavigator({
   CreateStack: {
-    screen: CreateStackContainer,
+    screen: CreateDeckContainer,
     navigationOptions: {
       tabBarLabel: 'Add deck',
       tabBarIcon: () => <Ionicons name="ios-bookmarks" size={20} color="green" />,
