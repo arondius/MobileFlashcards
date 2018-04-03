@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { KeyboardAvoidingView, TextInput, Text, TouchableOpacity } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import globalStyles from '../utils/styles'
+import uuid from '../utils/helpers'
+import { saveDeck } from '../utils/api'
 
 class CreateStack extends Component {
   state = {
@@ -12,6 +14,13 @@ class CreateStack extends Component {
     this.setState(() => ({
       input,
     }))
+  }
+
+  handleOnPressSaveDeck = () => {
+    const id = uuid()
+    this.props.saveDeck(id, this.state.input)
+    saveDeck(id, this.state.input)
+    this.props.navigation.navigate('DeckListContainer')
   }
 
   render() {
@@ -25,10 +34,7 @@ class CreateStack extends Component {
         />
         <TouchableOpacity
           style={globalStyles.btn}
-          onPress={() => {
-            this.props.saveDeck(this.state.input)
-            this.props.navigation.navigate('DeckListContainer')
-          }}
+          onPress={this.handleOnPressSaveDeck}
         >
           <Text>Save Deck</Text>
         </TouchableOpacity>
