@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, TextInput, Text, TouchableOpacity } from 'react-n
 import { withNavigation } from 'react-navigation'
 import globalStyles from '../utils/styles'
 import uuid from '../utils/helpers'
-import { saveDeck } from '../utils/api'
+import { saveDeckToStorage } from '../utils/api'
 
 class CreateStack extends Component {
   state = {
@@ -19,7 +19,7 @@ class CreateStack extends Component {
   handleOnPressSaveDeck = () => {
     const id = uuid()
     this.props.saveDeck(id, this.state.input)
-    saveDeck(id, this.state.input)
+    saveDeckToStorage(id, this.state.input)
     this.props.navigation.navigate('DeckListContainer')
   }
 

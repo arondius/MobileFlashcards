@@ -2,7 +2,7 @@ import { AsyncStorage } from 'react-native'
 
 const DECKS_STORAGE_KEY = 'UdaciMobileFlashCards:decks'
 
-export function saveDeck(id, title) {
+export function saveDeckToStorage(id, title) {
   const data = {}
   data[id] = {
     id,
