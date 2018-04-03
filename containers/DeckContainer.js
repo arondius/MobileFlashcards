@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import Deck from '../components/Deck'
 import globalStyles from '../utils/styles'
 
-const DeckContainer = ({ navigation, cards }) => {
-  const { deck } = navigation.state.params
+const DeckContainer = ({ navigation, cards, newlyCreatedDeck }) => {
+  const deck = navigation.state.params.deck ? navigation.state.params.deck : newlyCreatedDeck
   return (
     <View style={globalStyles.container}>
       <Deck deck={deck} cards={cards} navigation={navigation} />
@@ -15,9 +15,26 @@ const DeckContainer = ({ navigation, cards }) => {
 }
 
 function mapStateToProps(state, ownProps) {
-  const deckId = ownProps.navigation.state.params.deck.id
+  // Check 
+  function getCards() {
+    if(ownProps.navigation.state.params.deck) {
+      state.cards.filter(question =>
+        question.parentId === ownProps.navigation.state.params.deck.id)
+    }
+    return null
+  }
+  
+  function newlyCreatedDeck() {
+    if(ownProps.navigation.state.params.deckId) {
+      const { deckId } = ownProps.navigation.state.params
+      return Object.values(state.decks.items).filter(i => i.id === deckId)
+    }
+    return null
+  }
+
   return {
-    cards: state.cards.filter(question => question.parentId === deckId),
+    cards: getCards(),
+    newlyCreatedDeck: newlyCreatedDeck(),
   }
 }
 

@@ -20,7 +20,7 @@ class CreateStack extends Component {
     const id = uuid()
     this.props.saveDeck(id, this.state.input)
     saveDeckToStorage(id, this.state.input)
-    this.props.navigation.navigate('DeckListContainer')
+    this.props.navigation.navigate('DeckContainer', { deckId: id })
   }
 
   render() {

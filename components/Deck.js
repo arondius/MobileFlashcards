@@ -6,7 +6,7 @@ import globalStyles from '../utils/styles'
 const Deck = ({ deck, cards, navigation }) => {
   const { params } = navigation.state
   const { title } = deck
-  const numberOfCards = cards.length
+  const numberOfCards = cards ? cards.length : 0
   return (
     <View style={globalStyles.viewChild}>
       <Text>{title}</Text>
