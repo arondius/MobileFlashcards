@@ -1,4 +1,4 @@
-import { SAVE_DECK } from '../actions/decks'
+import { SAVE_DECK, GET_DECKS } from '../actions/decks'
 
 const defaultDecksState = [
   {
@@ -22,6 +22,8 @@ const defaultDecksState = [
 
 function decks(state = defaultDecksState, action) {
   switch (action.type) {
+    case GET_DECKS:
+      return [...state]
     case SAVE_DECK:
       return [...state, { id: action.id, title: action.title, questions: [] }]
     default:
