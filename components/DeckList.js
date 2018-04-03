@@ -2,16 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import globalStyles from '../utils/styles'
 import DeckListItemContainer from '../containers/DeckListItemContainer'
-import { getDecks } from '../utils/api'
 
 class DeckList extends React.Component {
   componentDidMount() {
-    this.getDecks()
-  }
-
-  getDecks() {
     this.props.getDecks()
-    // getDecks()
   }
 
   renderItem({item}) {

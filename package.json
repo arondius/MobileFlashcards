@@ -28,6 +28,7 @@
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
     "expo": "^25.0.0",
+    "lodash.merge": "^4.6.1",
     "npm": "^5.8.0",
     "react": "16.2.0",
     "react-native": "0.52.0",

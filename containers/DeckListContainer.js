@@ -7,7 +7,6 @@ import { getCardsInDeck } from '../actions/cards'
 import { getDecks } from '../actions/decks'
 
 class DeckListContainer extends Component {
-  
   render() {
     return (
       <View style={globalStyles.container}>
@@ -19,7 +18,7 @@ class DeckListContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    decks: state.decks
+    decks: Object.values(state.decks.items),
   }
 }
 

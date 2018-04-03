@@ -1,31 +1,34 @@
-import { SAVE_DECK, GET_DECKS } from '../actions/decks'
+import merge from 'lodash.merge'
+import { RECEIVE_SAVE_DECK, REQUEST_SAVE_DECK, REQUEST_RECEIVE_DECKS, RECEIVE_DECKS } from '../actions/decks'
 
-const defaultDecksState = [
-  {
-    id: '5808a1-53d-695-8f4-c70b3a347',
-    title: 'Spanish vocabulary',
-  },
-  {
-    id: 'dbff53-904-198-6f4-0307c9d2',
-    title: 'French vocabulary',
-  },
-  {
-    id: '467e59-d30-791-e0-4c9f7d141',
-    title: 'React patterns',
-  },
-  {
-    id: '4c7f31-67a-834-37d-2c27dd0b8',
-    title: 'Redux patterns',
-  },
-]
+const defaultDecksState = {
+  items: {},
+  isFetching: false,
+}
 
 
 function decks(state = defaultDecksState, action) {
   switch (action.type) {
-    case GET_DECKS:
-      return [...state]
-    case SAVE_DECK:
-      return [...state, { id: action.id, title: action.title, questions: [] }]
+    case REQUEST_RECEIVE_DECKS:
+    case REQUEST_SAVE_DECK:
+      return {
+        ...state,
+        isFetching: true,
+      }
+    case RECEIVE_DECKS:
+      // console.log('action', action)
+      console.log('merge(...state.items, action.json)', merge(...state.items, action.json))
+      return {
+        ...state,
+        items: merge(...state.items, action.json),
+        isFetching: false,
+      }
+    case RECEIVE_SAVE_DECK:
+      return {
+        ...state,
+        items: merge(...state.items, action.json),
+        isFetching: false,
+      }
     default:
       return state
   }
