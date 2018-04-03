@@ -9,7 +9,7 @@ class DeckListContainer extends Component {
   render() {
     return (
       <View style={globalStyles.container}>
-        <DeckList deckList={this.props.deckList} />
+        <DeckList decks={this.props.decks} />
       </View>
     )
   }
@@ -17,7 +17,7 @@ class DeckListContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    deckList: state.deckList
+    decks: state.decks
   }
 }
 

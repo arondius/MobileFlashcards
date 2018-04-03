@@ -1,6 +1,6 @@
 import { ADD_CARD } from '../actions/cards'
 
-const defaultQuestionsState = [
+const defaultCardsState = [
   {
   	id: 1,
   	parentId: 1,
@@ -39,7 +39,7 @@ const defaultQuestionsState = [
   },
 ]
 
-function questions(state = defaultQuestionsState, action) {
+function cards(state = defaultCardsState, action) {
   const maxValueOfId = Math.max(...state.map(o => o.id))
   switch (action.type) {
     case ADD_CARD:
@@ -57,4 +57,4 @@ function questions(state = defaultQuestionsState, action) {
   }
 }
 
-export default questions
+export default cards

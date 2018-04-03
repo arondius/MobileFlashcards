@@ -5,9 +5,9 @@ import globalStyles from '../utils/styles'
 
 class QuizScore extends React.Component {
   displayScore() {
-    const { numberOfQuestions, numberOfCorrectAnswers } = this.props
+    const { numberOfCards, numberOfCorrectAnswers } = this.props
     return (
-      <Text>{`Congratulations you've got ${numberOfCorrectAnswers} out of ${numberOfQuestions} questions right`}</Text>
+      <Text>{`Congratulations you've got ${numberOfCorrectAnswers} out of ${numberOfCards} questions right`}</Text>
     )
   }
 

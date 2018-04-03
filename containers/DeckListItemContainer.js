@@ -9,7 +9,7 @@ class DeckListItemContainer extends Component {
   render() {
     return (
       <View style={globalStyles.container}>
-        <DeckListItem deck={this.props.deck} questions={this.props.questions}/>
+        <DeckListItem deck={this.props.deck} cards={this.props.cards}/>
       </View>
     )
   }
@@ -17,7 +17,7 @@ class DeckListItemContainer extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    questions: state.questions.filter((question) => question.parentId === ownProps.deck.id)
+    cards: state.cards.filter((card) => card.parentId === ownProps.deck.id)
   }
 } 
 

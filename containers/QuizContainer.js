@@ -3,38 +3,38 @@ import { connect } from 'react-redux'
 import { View } from 'react-native'
 
 import globalStyles from '../utils/styles'
-import { nextQuestion, resetQuiz, markQuestion } from '../actions/quiz'
+import { nextCard, resetQuiz, markCard } from '../actions/quiz'
 import Quiz from '../components/Quiz'
 import QuizScore from '../components/QuizScore'
 
 class QuizContainer extends React.Component {
-  getQuestionOrScoreView() {
-    const { questions } = this.props
-    const { currentQuestion } = this.props
-    const numberOfQuestions = questions.length
+  getCardOrScoreView() {
+    const { cards } = this.props
+    const { currentCard } = this.props
+    const numberOfCards = cards.length
 
-    if (questions) {
-      // console.log('numberOfQuestions', numberOfQuestions)
-      // console.log('currentQuestion', currentQuestion)
-      // console.log('questions[currentQuestion]', questions[currentQuestion])
+    if (cards) {
+      // console.log('numberOfCards', numberOfCards)
+      // console.log('currentCard', currentCard)
+      // console.log('cards[currentCard]', cards[currentCard])
 
-      // Is currentQuestion equal or smaller than the total amount of questions?
-      // That means we can show the Quiz component with the nextQuestion dispatcher
-      if (numberOfQuestions >= currentQuestion && questions[currentQuestion]) {
+      // Is currentCard equal or smaller than the total amount of cards?
+      // That means we can show the Quiz component with the nextCard dispatcher
+      if (numberOfCards >= currentCard && cards[currentCard]) {
         return (
           <Quiz
-            question={questions[currentQuestion]}
-            nextQuestion={this.props.nextQuestion}
-            markQuestion={this.props.markQuestion}
-            numberOfQuestions={numberOfQuestions}
-            currentQuestion={this.props.currentQuestion}
+            card={cards[currentCard]}
+            nextCard={this.props.nextCard}
+            markCard={this.props.markCard}
+            numberOfCards={numberOfCards}
+            currentCard={this.props.currentCard}
           />
         )
       }
       return (
         <QuizScore
           numberOfCorrectAnswers={this.props.numberOfCorrectAnswers}
-          numberOfQuestions={numberOfQuestions}
+          numberOfCards={numberOfCards}
           resetQuiz={this.props.resetQuiz}
         />
       )
@@ -44,7 +44,7 @@ class QuizContainer extends React.Component {
 
   render() {
     return (
-      <View style={globalStyles.viewChild}>{this.getQuestionOrScoreView()}</View>
+      <View style={globalStyles.viewChild}>{this.getCardOrScoreView()}</View>
     )
   }
 }
@@ -52,17 +52,17 @@ class QuizContainer extends React.Component {
 function mapStateToProps(state, ownProps) {
   const parentId = ownProps.navigation.state.params.deck.id
   return {
-    questions: state.questions.filter(question => question.parentId === parentId),
-    currentQuestion: state.quiz.currentQuestion,
+    cards: state.cards.filter(card => card.parentId === parentId),
+    currentCard: state.quiz.currentCard,
     numberOfCorrectAnswers: state.quiz.numberOfCorrectAnswers,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return ({
-    nextQuestion: () => { dispatch(nextQuestion()) },
+    nextCard: () => { dispatch(nextCard()) },
     resetQuiz: () => { dispatch(resetQuiz()) },
-    markQuestion: (type) => { dispatch(markQuestion(type)) },
+    markCard: (type) => { dispatch(markCard(type)) },
   })
 }
 

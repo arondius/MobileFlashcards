@@ -1,5 +1,5 @@
 export const NEXT_QUESTION = 'NEXT_QUESTION'
-export function nextQuestion() {
+export function nextCard() {
   // console.log('Next question action called')
   return {
     type: NEXT_QUESTION,
@@ -22,14 +22,14 @@ export function setCorrectAnswer() {
   }
 }
 
-export function markQuestion(type) {
+export function markCard(type) {
   return function (dispatch) {
     if (type === 'correct') {
       dispatch(setCorrectAnswer())
-      dispatch(nextQuestion())
+      dispatch(nextCard())
     }
     if (type === 'incorrect') {
-      dispatch(nextQuestion())
+      dispatch(nextCard())
     }
   }
 }

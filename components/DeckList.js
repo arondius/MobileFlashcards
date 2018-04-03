@@ -4,7 +4,7 @@ import globalStyles from '../utils/styles'
 import { withNavigation } from 'react-navigation'
 import DeckListItemContainer from '../containers/DeckListItemContainer'
 
-const deckList = ({deckList}) => {
+const DeckList = ({decks}) => {
 
   const renderItem = ({item}) => {
     return (
@@ -18,7 +18,7 @@ const deckList = ({deckList}) => {
       <Text style={globalStyles.screenTitle}>Deck List</Text>
 
       <FlatList
-        data={deckList}
+        data={decks}
         renderItem={renderItem}
         keyExtractor={(item, index) => index}
       />
@@ -27,4 +27,4 @@ const deckList = ({deckList}) => {
   )
 }
 
-export default withNavigation(deckList);
+export default withNavigation(DeckList);

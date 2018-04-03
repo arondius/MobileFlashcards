@@ -29,7 +29,7 @@ class Quiz extends React.Component {
     if (this.state.showAnswer) {
       return (
         <Text style={globalStyles.screenTitle}>
-          {this.props.question.answer}
+          {this.props.card.answer}
         </Text>
       )
     }
@@ -37,23 +37,23 @@ class Quiz extends React.Component {
   }
 
   render() {
-    const { question } = this.props
+    const { card } = this.props
     return (
       <View style={globalStyles.viewChild}>
         <Text style={{ fontSize: 24 }}>
-          Question {this.props.currentQuestion} of {this.props.numberOfQuestions}
+          Card {this.props.currentCard} of {this.props.numberOfCards}
         </Text>
-        <Text style={globalStyles.screenTitle}>{question.question}</Text>
+        <Text style={globalStyles.screenTitle}>{card.question}</Text>
         {this.showAnswer()}
         <View style={{ flexDirection: 'row' }} >
           <TouchableOpacity
-            onPress={() => this.props.markQuestion('correct')}
+            onPress={() => this.props.markCard('correct')}
             style={[globalStyles.btn, globalStyles.btnMarkAnswer, globalStyles.btnCheck]}
           >
             <Ionicons name="ios-checkmark-outline" size={40} color="white" />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => this.props.markQuestion('incorrect')}
+            onPress={() => this.props.markCard('incorrect')}
             style={[globalStyles.btn, globalStyles.btnMarkAnswer, globalStyles.btnError]}
           >
             <Ionicons name="ios-close-outline" size={40} color="white" />

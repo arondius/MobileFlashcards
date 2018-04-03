@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import CreateStack from '../components/CreateStack'
-import { saveDeck } from '../actions/deckList'
+import { saveDeck } from '../actions/decks'
 
 const CreateStackContainer = props => (
   <CreateStack saveDeck={props.saveDeck} />

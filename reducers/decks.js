@@ -1,6 +1,6 @@
-import { SAVE_DECK } from '../actions/deckList'
+import { SAVE_DECK } from '../actions/decks'
 
-const defaultDeckListState = [
+const defaultDecksState = [
   {
     id: 1,
     title: 'Spanish vocabulary',
@@ -19,7 +19,8 @@ const defaultDeckListState = [
   },
 ]
 
-function deckList(state = defaultDeckListState, action) {
+
+function decks(state = defaultDecksState, action) {
   const maxValueOfId = Math.max(...state.map(o => o.id))
   const id = maxValueOfId + 1
   switch (action.type) {
@@ -30,4 +31,4 @@ function deckList(state = defaultDeckListState, action) {
   }
 }
 
-export default deckList
+export default decks

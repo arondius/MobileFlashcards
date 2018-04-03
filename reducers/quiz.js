@@ -1,7 +1,7 @@
 import { NEXT_QUESTION, RESET_QUIZ, SET_CORRECT_ANSWER } from '../actions/quiz'
 
 const defaultQuizState = {
-  currentQuestion: 0,
+  currentCard: 0,
   numberOfCorrectAnswers: 0,
 }
 
@@ -12,12 +12,12 @@ function quiz(state = defaultQuizState, action) {
     case NEXT_QUESTION:
       return {
         ...state,
-        currentQuestion: state.currentQuestion + 1,
+        currentCard: state.currentCard + 1,
       }
     case RESET_QUIZ:
       return {
         ...state,
-        currentQuestion: 0,
+        currentCard: 0,
         numberOfCorrectAnswers: 0,
       }
     case SET_CORRECT_ANSWER:

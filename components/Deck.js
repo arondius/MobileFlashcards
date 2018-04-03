@@ -3,15 +3,15 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import globalStyles from '../utils/styles'
 
-const Deck = ({ deck, questions, navigation }) => {
+const Deck = ({ deck, cards, navigation }) => {
   const { params } = navigation.state
   const { title } = deck
-  const numberOfQuestions = questions.length
+  const numberOfCards = cards.length
   return (
     <View style={globalStyles.viewChild}>
       <Text>{title}</Text>
-      <Text>{numberOfQuestions} cards in this deck</Text>
-      {numberOfQuestions > 0 ?
+      <Text>{numberOfCards} cards in this deck</Text>
+      {numberOfCards > 0 ?
         <TouchableOpacity
           onPress={() => (navigation.navigate('QuizContainer', params))}
           style={globalStyles.btn}
