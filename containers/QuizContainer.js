@@ -10,7 +10,8 @@ import QuizScore from '../components/QuizScore'
 class QuizContainer extends React.Component {
   getCardOrScoreView() {
     const { cards } = this.props
-    const { currentCard } = this.props
+    const { cardIndex } = this.props
+    const currentCard = cardIndex + 1
     const numberOfCards = cards.length
 
     if (cards) {
@@ -20,14 +21,15 @@ class QuizContainer extends React.Component {
 
       // Is currentCard equal or smaller than the total amount of cards?
       // That means we can show the Quiz component with the nextCard dispatcher
-      if (numberOfCards >= currentCard && cards[currentCard]) {
+      if (numberOfCards >= cardIndex && cards[cardIndex]) {
         return (
           <Quiz
-            card={cards[currentCard]}
+            card={cards[cardIndex]}
+            cardIndex={cardIndex}
             nextCard={this.props.nextCard}
             markCard={this.props.markCard}
             numberOfCards={numberOfCards}
-            currentCard={this.props.currentCard}
+            currentCard={currentCard}
           />
         )
       }
@@ -53,7 +55,7 @@ function mapStateToProps(state, ownProps) {
   const parentId = ownProps.navigation.state.params.deck.id
   return {
     cards: state.cards.filter(card => card.parentId === parentId),
-    currentCard: state.quiz.currentCard,
+    cardIndex: state.quiz.cardIndex,
     numberOfCorrectAnswers: state.quiz.numberOfCorrectAnswers,
   }
 }
