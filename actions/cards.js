@@ -1,9 +1,55 @@
-export const ADD_CARD = 'ADD_CARD'
-export function addCard(parentId, question, answer) {
+import { getCardsFromStorage, saveCardToStorage } from '../utils/api'
+
+export const REQUEST_RECEIVE_CARDS = 'REQUEST_RECEIVE_CARDS'
+export function requestReceiveCards() {
   return {
-    type: ADD_CARD,
-    parentId,
-    question,
-    answer,
+    type: REQUEST_RECEIVE_CARDS,
+  }
+}
+
+export const RECEIVE_CARDS = 'RECEIVE_CARDS'
+export function receiveCards(json) {
+  // console.log('json in RECEIVE_CARDS', json)
+  return {
+    type: RECEIVE_CARDS,
+    json,
+  }
+}
+
+export function getCards() {
+  // console.log('getCards called')
+  return function (dispatch) {
+    dispatch(requestReceiveCards())
+
+    return getCardsFromStorage()
+    .then(json => {
+      dispatch(receiveCards(json))
+    })
+  }
+}
+
+export const REQUEST_SAVE_CARD = 'REQUEST_SAVE_CARD'
+export function requestSaveCard() {
+  return {
+    type: REQUEST_SAVE_CARD,
+  }
+}
+
+export const RECEIVE_SAVE_CARD = 'RECEIVE_SAVE_CARD'
+export function receiveSaveCard(json) {
+  return {
+    type: RECEIVE_SAVE_CARD,
+    json,
+  }
+}
+
+export function saveCard(id, title) {
+  return function(dispatch) {
+    dispatch(requestSaveCard)
+
+    return saveCardToStorage(id, title)
+    .then(json => {
+      dispatch(receiveSaveCard(json))
+    })
   }
 }
