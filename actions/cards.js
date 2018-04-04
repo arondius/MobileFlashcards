@@ -43,13 +43,13 @@ export function receiveSaveCard(json) {
   }
 }
 
-export function saveCard(id, title) {
+export function saveCard(id, parentId, question, answer) {
   return function(dispatch) {
-    dispatch(requestSaveCard)
+    dispatch(requestSaveCard())
 
-    return saveCardToStorage(id, title)
-    .then(json => {
-      dispatch(receiveSaveCard(json))
-    })
+    return saveCardToStorage(id, parentId, question, answer)
+    .then(res => {
+      dispatch(receiveSaveCard(res))
+    }, err => console.log(err))
   }
 }

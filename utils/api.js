@@ -3,13 +3,16 @@ import { AsyncStorage } from 'react-native'
 const DECKS_STORAGE_KEY = 'UdaciMobileFlashCards:decks'
 const CARDS_STORAGE_KEY = 'UdaciMobileFlashCards:cards'
 
-export function saveDeckToStorage(id, title) {
+export async function saveDeckToStorage(id, title) {
   const data = {}
   data[id] = {
     id,
     title,
   }
-  return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(data))
+  await AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(data))
+  const items = await AsyncStorage.getItem(DECKS_STORAGE_KEY)
+  const item = JSON.parse(items)[id]
+  return item
 }
 
 export async function getDecksFromStorage() {
@@ -17,9 +20,7 @@ export async function getDecksFromStorage() {
     .then(res => JSON.parse(res))
 }
 
-//AsyncStorage.removeItem(DECKS_STORAGE_KEY)
-
-export function saveCardToStorage(id, parentId, question, answer) {
+export async function saveCardToStorage(id, parentId, question, answer) {
   const data = {}
   data[id] = {
     id,
@@ -27,7 +28,10 @@ export function saveCardToStorage(id, parentId, question, answer) {
     question,
     answer,
   }
-  return AsyncStorage.mergeItem(CARDS_STORAGE_KEY, JSON.stringify(data))
+  await AsyncStorage.mergeItem(CARDS_STORAGE_KEY, JSON.stringify(data))
+  const items = await AsyncStorage.getItem(CARDS_STORAGE_KEY)
+  const item = JSON.parse(items)[id]
+  return item
 }
 
 export async function getCardsFromStorage() {

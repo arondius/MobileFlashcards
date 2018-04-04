@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { KeyboardAvoidingView, TextInput, Text, TouchableOpacity } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import globalStyles from '../utils/styles'
+import guid from '../utils/helpers'
 
 class AddCard extends Component {
   state = {
@@ -23,6 +24,7 @@ class AddCard extends Component {
 
   render() {
     const { params } = this.props.navigation.state
+    const id = guid()
     const cardId = params.deck.id
     return (
       <KeyboardAvoidingView behavior="padding" style={globalStyles.viewChild} >
@@ -41,6 +43,7 @@ class AddCard extends Component {
           style={globalStyles.btn}
           onPress={() => {
             this.props.addCard(
+              id,
               cardId,
               this.state.inputQuestion,
               this.state.inputAnswer,

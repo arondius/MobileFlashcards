@@ -54,7 +54,7 @@ class QuizContainer extends React.Component {
 function mapStateToProps(state, ownProps) {
   const parentId = ownProps.navigation.state.params.deck.id
   return {
-    cards: state.cards.filter(card => card.parentId === parentId),
+    cards: Object.values(state.cards.items).filter(card => card.parentId === parentId),
     cardIndex: state.quiz.cardIndex,
     numberOfCorrectAnswers: state.quiz.numberOfCorrectAnswers,
   }

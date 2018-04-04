@@ -16,8 +16,6 @@ function decks(state = defaultDecksState, action) {
         isFetching: true,
       }
     case RECEIVE_DECKS:
-      // console.log('action', action)
-      console.log('merge(...state.items, action.json)', merge(...state.items, action.json))
       return {
         ...state,
         items: merge(...state.items, action.json),
@@ -26,7 +24,13 @@ function decks(state = defaultDecksState, action) {
     case RECEIVE_SAVE_DECK:
       return {
         ...state,
-        items: merge(...state.items, action.json),
+        items: {
+          ...state.items,
+          [action.json.id]: {
+            id: action.json.id,
+            title: action.json.title,
+          },
+        },
         isFetching: false,
       }
     default:

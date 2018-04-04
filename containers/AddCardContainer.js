@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import AddCard from '../components/AddCard'
-import { addCard } from '../actions/cards'
+import { saveCard } from '../actions/cards'
 
 const AddCardContainer = props => (
   <AddCard addCard={props.addCard} />
@@ -9,7 +9,7 @@ const AddCardContainer = props => (
 
 function mapDispatchToProps(dispatch) {
   return ({
-    addCard: (deckId, question, answer) => { dispatch(addCard(deckId, question, answer)) },
+    addCard: (id, parentId, question, answer) => { dispatch(saveCard(id, parentId, question, answer)) },
   })
 }
 

@@ -22,9 +22,12 @@ export function getDecks() {
     dispatch(requestReceiveDecks())
 
     return getDecksFromStorage()
-    .then(json => {
-      dispatch(receiveDecks(json))
-    })
+    .then(res => {
+      dispatch(receiveDecks(res))
+    }, 
+    err => {
+      console.log(err)
+  })
   }
 }
 
@@ -48,8 +51,8 @@ export function saveDeck(id, title) {
     dispatch(requestSaveDeck)
 
     return saveDeckToStorage(id, title)
-    .then(json => {
-      dispatch(receiveSaveDeck(json))
-    })
+    .then(res => {
+      dispatch(receiveSaveDeck(res))
+    }, err => console.log('error occured', err))
   }
 }

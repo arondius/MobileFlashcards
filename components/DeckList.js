@@ -6,6 +6,7 @@ import DeckListItemContainer from '../containers/DeckListItemContainer'
 class DeckList extends React.Component {
   componentDidMount() {
     this.props.getDecks()
+    this.props.getCards()
   }
 
   renderItem({item}) {

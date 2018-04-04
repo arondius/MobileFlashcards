@@ -17,8 +17,10 @@ class DeckListItemContainer extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    cards: state.cards.filter((card) => card.parentId === ownProps.deck.id)
+    cards: state.cards.items ? 
+      Object.values(state.cards.items)
+      .filter((card) => card.parentId === ownProps.deck.id) : null
   }
-} 
+}
 
 export default connect(mapStateToProps, null)(DeckListItemContainer)
