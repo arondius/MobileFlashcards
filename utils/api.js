@@ -38,3 +38,6 @@ export async function getCardsFromStorage() {
   return AsyncStorage.getItem(CARDS_STORAGE_KEY)
     .then(res => JSON.parse(res))
 }
+
+// AsyncStorage.removeItem(DECKS_STORAGE_KEY)
+// AsyncStorage.removeItem(CARDS_STORAGE_KEY)
