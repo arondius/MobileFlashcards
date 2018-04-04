@@ -70,7 +70,7 @@ const Tabs = TabNavigator({
   DeckList: {
     screen: Stack,
     navigationOptions: {
-      tabBarLabel: 'View deck',
+      tabBarLabel: 'View decks',
       tabBarIcon: () => <Ionicons name="ios-albums" size={20} color="red" />,
     },
   },
