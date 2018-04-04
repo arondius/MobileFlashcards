@@ -24,10 +24,30 @@ const App = () => (
 )
 
 const Stack = StackNavigator({
-  DeckListContainer: { screen: DeckListContainer },
-  DeckContainer: { screen: DeckContainer },
-  AddCardContainer: { screen: AddCardContainer },
-  QuizContainer: { screen: QuizContainer },
+  DeckListContainer: {
+    screen: DeckListContainer,
+    navigationOptions: {
+      title: 'Decks'
+    },
+  },
+  DeckContainer: {
+    screen: DeckContainer,
+    navigationOptions: {
+      title: 'Deck'
+    },
+  },
+  AddCardContainer: {
+    screen: AddCardContainer,
+    navigationOptions: {
+      title: 'Add card to deck'
+    },
+  },
+  QuizContainer: {
+    screen: QuizContainer,
+    navigationOptions: {
+      title: 'Quiz'
+    },
+  },
 })
 
 const Tabs = TabNavigator({
