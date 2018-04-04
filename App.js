@@ -8,6 +8,7 @@ import { Ionicons } from '@expo/vector-icons'
 import logger from 'redux-logger'
 import { purple, white } from './utils/colors'
 import rootReducer from './reducers'
+import { setLocalNotification } from './utils/helpers'
 import CreateDeckContainer from './containers/CreateDeckContainer'
 import DeckListContainer from './containers/DeckListContainer'
 import DeckContainer from './containers/DeckContainer'
@@ -17,11 +18,19 @@ import QuizContainer from './containers/QuizContainer'
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 
-const App = () => (
-  <Provider store={store}>
-    <Tabs />
-  </Provider>
-)
+class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
+
+  render() {
+    return (
+    <Provider store={store}>
+      <Tabs />
+    </Provider>
+    )
+  }
+}
 
 const Stack = StackNavigator({
   DeckListContainer: {

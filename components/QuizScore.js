@@ -2,10 +2,13 @@ import React from 'react'
 import { withNavigation } from 'react-navigation'
 import { View, Text, TouchableOpacity } from 'react-native'
 import globalStyles from '../utils/styles'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
 class QuizScore extends React.Component {
   displayScore() {
     const { numberOfCards, numberOfCorrectAnswers } = this.props
+    clearLocalNotification().then(setLocalNotification)
+
     return (
       <Text>{`Congratulations you've got ${numberOfCorrectAnswers} out of ${numberOfCards} questions right`}</Text>
     )
