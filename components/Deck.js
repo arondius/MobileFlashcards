@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity,KeyboardAvoidingView } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import globalStyles from '../utils/styles'
 
@@ -11,8 +11,8 @@ class Deck extends React.Component {
     const { title } = deck
     const numberOfCards = cards ? cards.length : 0
     return (
-      <View style={globalStyles.viewChild}>
-        <Text>{title}</Text>
+      <KeyboardAvoidingView behavior="padding" style={globalStyles.viewChild}>
+        <Text style={globalStyles.screenTitle}>{title}</Text>
         <Text>{numberOfCards} cards in this deck</Text>
         {numberOfCards > 0 ?
           <TouchableOpacity
@@ -27,7 +27,7 @@ class Deck extends React.Component {
         >
           <Text>Add a new card to {title}</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
