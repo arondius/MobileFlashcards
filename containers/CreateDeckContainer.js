@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import CreateStack from '../components/CreateStack'
 import { saveDeck } from '../actions/decks'
-import guid from '../utils/helpers'
+import { guid } from '../utils/helpers'
 
 const CreateStackContainer = props => (
   <CreateStack saveDeck={props.saveDeck} />

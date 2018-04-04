@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { KeyboardAvoidingView, TextInput, Text, TouchableOpacity } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import globalStyles from '../utils/styles'
-import guid from '../utils/helpers'
+import { guid } from '../utils/helpers'
 
 class AddCard extends Component {
   state = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { KeyboardAvoidingView, TextInput, Text, TouchableOpacity } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import globalStyles from '../utils/styles'
-import uuid from '../utils/helpers'
+import { guid } from '../utils/helpers'
 import { saveDeckToStorage } from '../utils/api'
 
 class CreateStack extends Component {
@@ -17,7 +17,7 @@ class CreateStack extends Component {
   }
 
   handleOnPressSaveDeck = () => {
-    const id = uuid()
+    const id = guid()
     this.props.saveDeck(id, this.state.input)
     saveDeckToStorage(id, this.state.input)
     this.props.navigation.navigate('DeckContainer', { deck: { id, title: this.state.input } })
