@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { Ionicons } from '@expo/vector-icons'
+import logger from 'redux-logger'
 import { purple, white } from './utils/colors'
 import rootReducer from './reducers'
 import CreateDeckContainer from './containers/CreateDeckContainer'
@@ -12,8 +13,9 @@ import DeckListContainer from './containers/DeckListContainer'
 import DeckContainer from './containers/DeckContainer'
 import AddCardContainer from './containers/AddCardContainer'
 import QuizContainer from './containers/QuizContainer'
+// Logger with default options
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 
 const App = () => (
   <Provider store={store}>
